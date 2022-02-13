@@ -1,0 +1,40 @@
+{% extends 'maintemplate.html' %}
+ 
+{% block content %}
+        <h1 class="blog-title"> Practise with  Forms in Django</h1>
+        <div class="form-box">
+                {% comment %} <form action="/formtest/aaa.html" method="post"> {% endcomment %}
+                        {% comment %} if inside the action isnt helped the data are sent to its own page {% endcomment %}
+                <form action="" method="post"> 
+                                <div>               
+
+                                        <lable for="name">Name: </lable>
+                                        <input type="text" id="name" name="fname">
+                                </div>
+
+                                <div>
+                                         <lable for="family">Family : </lable>
+                                         <input type="text" id="family" name="lname">
+                                </div>
+
+                                <div>
+                                         <lable for="age">Age  : </lable>
+                                         <input type="text" id="age" name="age">
+                                </div>
+
+                                <div> 
+                                         {% comment %} <lable for="name"> NAME :</lable> {% endcomment %}
+
+                                         <input type="submit" value="ENROLMENT">
+                                </div>
+                 </form>
+        </div>
+
+{% endblock %}
+      
+
+{% block title  %}
+
+Registeration
+
+{% endblock  %}
