@@ -1,0 +1,25 @@
+{% extends 'maintemplate.html' %}
+ 
+{% block content %}
+        <h1 class="blog-title"> Practise wiooooth  XXLForms in Django</h1>
+        <div class="form-box">
+                {% comment %} <form action="/formtest/aaa.html" method="post"> {% endcomment %}
+                        {% comment %} if inside the action isnt helped the data are sent to its own page {% endcomment %}
+                <form action=""  > 
+                        {%  csrf_token %}
+                        {{form}}     
+                                        
+                </form>                        
+        </div>
+
+
+{% endblock %}
+
+
+
+
+{% block title  %}
+
+Registeration
+
+{% endblock  %}
