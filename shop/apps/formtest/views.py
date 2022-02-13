@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import InputForm0
 # from django.http import HttpResponse,Http404
 # from django.conf import settings
 # # from apps.blog.models import Author
@@ -10,7 +11,13 @@ def form(request):
     return render(request,"formtest/form.html")
 
 
-
+def form0(request):
+    form=InputForm0()
+    context={
+        'form':form
+        
+    }
+    return render(request,"fomtest/form0.html")
 
 
 
