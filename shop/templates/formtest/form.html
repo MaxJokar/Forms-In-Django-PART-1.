@@ -5,7 +5,8 @@
         <div class="form-box">
                 {% comment %} <form action="/formtest/aaa.html" method="post"> {% endcomment %}
                         {% comment %} if inside the action isnt helped the data are sent to its own page {% endcomment %}
-                <form action="" method="post"> 
+                <form action="" method="get"> 
+                        {%   csrf_token %}
                                 <div>               
 
                                         <lable for="name">Name: </lable>
