@@ -1,7 +1,9 @@
 from audioop import avg
 from distutils.command import clean
 from logging import PlaceHolder
+# from xml.dom import ValidationErr
 from django import forms
+from django.core.exceptions import ValidationError
 
 
 class InputForm1(forms.Form):
@@ -84,9 +86,13 @@ class InputForm3(forms.Form):
     
     def clean_family(self) :
         family=self.cleaned_data["family"]
+        if family[0]!='A': 
+            raise ValidationError("Family Must not started by  A...")
         return family
     
-    
+    def clean_age(self) :
+        age=self.cleaned_data["age"]
+        return age
     
     
     
