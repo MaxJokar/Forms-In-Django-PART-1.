@@ -35,7 +35,7 @@ class widgetForm1(forms.Form):
     name=forms.CharField(max_length=10 , required=True,label='Name')
     family=forms.CharField(max_length=15, label="Family")
     password=forms.CharField(max_length="10",label="PASSWORD",widget=forms.PasswordInput)
-    
+    register_date=forms.DateField(label="Date of Enrolment", required=False,widget=forms.SelectDateWidget)
     
     
     
