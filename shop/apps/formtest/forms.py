@@ -36,9 +36,9 @@ class widgetForm1(forms.Form):
     family=forms.CharField(max_length=15, label="Family")
     password=forms.CharField(max_length="10",label="PASSWORD",widget=forms.PasswordInput)
     Year_Choice=['2018','2019','2020','2021','2022'] #Limited years  Added 
-    register_date=forms.DateField(label="Date of Enrolment", required=False,widget=forms.SelectDateWidget(years=Year_Choice))
-    
-    
+    register_date1=forms.DateField(label="Date of Enrolment", required=False,widget=forms.SelectDateWidget(years=Year_Choice))
+    register_date2=forms.DateField(label="Date of Enrolment", required=False,widget=forms.NumberInput(attrs={'type','date'}))
+    #attribute added to show its type of  date.anytime we wanted a property and a tag added to html ,use attrs
     
     
     
