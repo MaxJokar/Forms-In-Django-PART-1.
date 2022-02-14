@@ -1,4 +1,5 @@
 from audioop import avg
+from distutils.command import clean
 from logging import PlaceHolder
 from django import forms
 
@@ -30,15 +31,11 @@ class InputForm2(forms.Form):
     colors=forms.MultipleChoiceField(choices=FAVORITE_COLOR)
     
      
+
     
-         
+
 class widgetForm1(forms.Form):
-    name=forms.CharField(
-        max_length=10 , 
-        required=True,
-        label='Name',
-        widget=forms.TextInput(attrs={'class':'c1','placeholder':'ENTER You Name'}))
-    
+    name=forms.CharField(max_length=10 , required=True,label='Name')    
     family=forms.CharField(max_length=15, label="Family")
     password=forms.CharField(max_length="10",label="PASSWORD",widget=forms.PasswordInput)
     Year_Choice=['2018','2019','2020','2021','2022'] #Limited years  Added 
@@ -55,6 +52,75 @@ class widgetForm1(forms.Form):
     colors=forms.MultipleChoiceField(choices=FAVORITE_COLOR)
     description=forms.BooleanField(widget=forms.Textarea)
     description.widget.attrs.update({'class':'c1'})
+    
+    
+    
+    
+    
+    
+    
+    
+def checkValidateName(value):
+    value=str(value)
+    if len(value)<2 or len (value)>20:
+        raise forms.ValidationError("Name is INvalid") 
+    
+    
+def ageValidate(value):
+     value=int(value)
+     if value<18 or value>70:
+         raise forms.ValidationError("Age Out of  Range")
+     
+    
+class InputForm3(forms.Form):
+    name=forms.CharField(max_length=10 , required=True,label='Name', validators=[checkValidateName])    
+    family=forms.CharField(max_length=15, label="Family")
+    age=forms.IntegerField(label="Age",validators=[ageValidate])
+    is_active=forms.BooleanField(initial=True)
+    
+    def clean_name(self) :
+        name=self.cleaned_data["name"]
+        return name
+    
+    def clean_family(self) :
+        family=self.cleaned_data["family"]
+        return family
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    # password=forms.CharField(max_length="10",label="PASSWORD",widget=forms.PasswordInput)
+    # Year_Choice=['2018','2019','2020','2021','2022'] #Limited years  Added 
+    # register_date1=forms.DateField(label="Date of Enrolment", required=False,widget=forms.SelectDateWidget(years=Year_Choice))
+    # register_date2=forms.DateField(label="Date of Enrolment", required=False,widget=forms.NumberInput(attrs={'type':'date'}))
+    # #attribute added to show its type of  date.anytime we wanted a property and a tag added to html ,use attrs
+    # FAVORITE_COLOR=[
+    #                 ("1","Red"),
+    #                 ("2","Green"),
+    #                 ("3","Blue"),
+    #                 ("4","Yellow"),                             
+    #                 ]
+    # color=forms.ChoiceField(choices=FAVORITE_COLOR)
+    # colors=forms.MultipleChoiceField(choices=FAVORITE_COLOR)
+    # description=forms.BooleanField(widget=forms.Textarea)
+    # description.widget.attrs.update({'class':'c1'})
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
