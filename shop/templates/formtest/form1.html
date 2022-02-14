@@ -7,8 +7,16 @@
                         {% comment %} if inside the action isnt helped the data are sent to its own page {% endcomment %}
                 <form action=""  > 
                         {%  csrf_token %}
-                        {{form}}     
-                                        
+                        <table  border="1">
+                        {% comment %} {{form}}      {% endcomment %}
+                                {{form.as_table}}   
+                        
+                                <tr>
+                                        <td>
+                                         <input type="submit" value="ENROLMENT">
+                                        </td> 
+                                </tr>
+                        </table>  
                 </form>                        
         </div>
 
