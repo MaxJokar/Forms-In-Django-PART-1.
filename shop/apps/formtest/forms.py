@@ -26,3 +26,4 @@ class InputForm2(forms.Form):
                     ("4","Yellow"),                             
                     ]
     color=forms.ChoiceField(choices=FAVORITE_COLOR)
+    colors=forms.MultipleChoiceField(choices=FAVORITE_COLOR)
