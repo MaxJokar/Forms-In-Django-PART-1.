@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import InputForm1
+from .forms import InputForm1,InputForm2
 
 
 
@@ -11,9 +11,9 @@ def form(request):
 
 
 def form1(request):
-    forms=InputForm1()
+    form=InputForm1()
     context={
-        'form':forms
+        'form':form
         
     }
     return render(request,"formtest/form1.html",context)
@@ -21,7 +21,13 @@ def form1(request):
 
 
 
-
+def form2(request):
+    form=InputForm2()
+    context={
+        'form':form
+        
+    }
+    return render(request,"formtest/form2.html",context)
 
 
 

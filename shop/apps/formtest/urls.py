@@ -5,6 +5,7 @@ import apps.formtest.views as views
 urlpatterns = [
     path('form/',views.form),
     path('form1/',views.form1),
+    path('form2/',views.form2),
     
 ]
 
