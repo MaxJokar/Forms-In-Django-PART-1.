@@ -10,7 +10,8 @@ h1{
 }
 .c1{
 
-    text-align: center;
+    /* text-align: center; */
+    background-color: yellow;
 }
 
 .img-class{
@@ -93,3 +94,7 @@ h1{
 .helptext{
     color:red
 }   
+
+.c1{
+    background-color: yellow;
+}
