@@ -27,3 +27,19 @@ class InputForm2(forms.Form):
                     ]
     color=forms.ChoiceField(choices=FAVORITE_COLOR)
     colors=forms.MultipleChoiceField(choices=FAVORITE_COLOR)
+    
+    
+    
+         
+class widgetForm1(forms.Form):
+    name=forms.CharField(max_length=10 , required=True,label='Name')
+    family=forms.CharField(max_length=15, label="Family")
+    password=forms.CharField(max_length="10",label="PASSWORD",widget=forms.PasswordInput)
+    
+    
+    
+    
+    
+    
+    
+    
