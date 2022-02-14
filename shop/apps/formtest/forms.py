@@ -33,7 +33,12 @@ class InputForm2(forms.Form):
     
          
 class widgetForm1(forms.Form):
-    name=forms.CharField(max_length=10 , required=True,label='Name',widget=forms.TextInput(attrs={'class':'c1','placeholder':'ENTER You Name'}))
+    name=forms.CharField(
+        max_length=10 , 
+        required=True,
+        label='Name',
+        widget=forms.TextInput(attrs={'class':'c1','placeholder':'ENTER You Name'}))
+    
     family=forms.CharField(max_length=15, label="Family")
     password=forms.CharField(max_length="10",label="PASSWORD",widget=forms.PasswordInput)
     Year_Choice=['2018','2019','2020','2021','2022'] #Limited years  Added 
