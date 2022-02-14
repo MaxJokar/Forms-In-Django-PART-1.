@@ -16,7 +16,7 @@ def form1(request):
         'form':form
         
     }
-    return render(request,"formtest/form1.html",context)
+    return render(request,"formtest/form2.html",context)
 
 
 
@@ -27,7 +27,7 @@ def form2(request):
         'form':form
         
     }
-    return render(request,"formtest/form2.html",context)
+    return render(request,"formtest/form1.html",context)
 
 
 
