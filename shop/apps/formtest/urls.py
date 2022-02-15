@@ -3,12 +3,13 @@ import apps.formtest.views as views
 
 
 urlpatterns = [
+    path('form0/',views.form0),
     path('form/',views.form),
     path('form1/',views.form1),
     path('form2/',views.form2),
     path('form3/',views.form3),
     path('form4/',views.form4),
-     path('form5/',views.form5),
+    path('form5/',views.form5),
     
 ]
 

@@ -6,7 +6,7 @@ from django.conf.urls.static import static #aslo required after +setting To be r
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('apps.mainapp.urls')),
-    path('blog/',include('apps.blog.urls')),
+    # path('blog/',include('apps.blog.urls')),
     path('formtest/',include('apps.formtest.urls')),
     
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

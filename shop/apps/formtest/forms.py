@@ -4,6 +4,59 @@ from logging import PlaceHolder
 # from xml.dom import ValidationErr
 from django import forms
 from django.core.exceptions import ValidationError
+from django.core  import validators
+
+
+
+
+def checkValidateName(value):
+    value=str(value)
+    if len(value)<3 or len (value)>20:
+        raise forms.ValidationError("Name is Invalid") 
+
+def ageValidate(value):
+     value=int(value)
+     if value<18 or value>70:
+         raise forms.ValidationError("Age Out of  Range") 
+
+class InputForm0(forms.Form):
+    # name=forms.CharField(max_length=10 , required=True,label='Name')
+    name=forms.CharField(max_length=10 , required=True,label='Name',validators=[checkValidateName])
+    family=forms.CharField(max_length=15, label="Family")
+    age=forms.IntegerField(label="Age",label_suffix="=>")
+    is_active=forms.BooleanField(initial=True)
+
+
+    def clean_name(self):
+        name=self.cleaned_data["name"]
+        return name
+    
+    def clean_family(self):
+        family=self.cleaned_data["family"]
+        if family[0]!='A': 
+            raise ValidationError("Family begins with A not accepted")
+        return family
+    
+    def clean_age(self):
+        age=self.cleaned_data["age"]
+        return age
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14,19 +67,7 @@ class InputForm(forms.Form):
     is_active=forms.BooleanField(initial=True)
     
 
-
-def checkValidateName(value):
-    value=str(value)
-    if len(value)<2 or len (value)>20:
-        raise forms.ValidationError("Name is INvalid") 
-    
-    
-def ageValidate(value):
-     value=int(value)
-     if value<18 or value>70:
-         raise forms.ValidationError("Age Out of  Range")
-
-
+#===================================================================================
 
 class InputForm1(forms.Form):
     name=forms.CharField(max_length=10 , required=True,label='Name')
@@ -34,33 +75,22 @@ class InputForm1(forms.Form):
     age=forms.IntegerField(label="Age",label_suffix="=>")
     is_active=forms.BooleanField(initial=True)
     
+#===================================================================================    
+   
+def checkValidateName(value):
+    value=str(value)
+    if len(value)<3 or len (value)>20:
+        raise forms.ValidationError("Name is INvalid") 
     
-    def clean_name(self) :
-        name=self.cleaned_data["name"]
-        return name
-    
-    def clean_family(self) :
-        family=self.cleaned_data["family"]
-        if family[0]!='A': 
-            raise ValidationError("Family Must not started by  A...")
-        return family
-    
-    def clean_age(self) :
-        age=self.cleaned_data["age"]
-        return age
-    
-    
-    
-    
-    
-    
-    
-    
+def ageValidate(value):
+     value=int(value)
+     if value<18 or value>70:
+         raise forms.ValidationError("Age Out of  Range") 
         
 class InputForm2(forms.Form):
-    name=forms.CharField(max_length=10 , required=True,label='Name')
+    name=forms.CharField(max_length=10 , required=True,label='Name',validators=[checkValidateName])
     family=forms.CharField(max_length=15, label="Family")
-    age=forms.IntegerField(label="Age",label_suffix="=>")
+    age=forms.IntegerField(label="Age",label_suffix="=>",validators=[ageValidate])
     is_active=forms.BooleanField(initial=True)
     avg=forms.DecimalField(max_digits=4,decimal_places=2,label="Score Average")
     email=forms.EmailField(max_length=50,label="email")
@@ -76,9 +106,25 @@ class InputForm2(forms.Form):
     color=forms.ChoiceField(choices=FAVORITE_COLOR)
     colors=forms.MultipleChoiceField(choices=FAVORITE_COLOR)
     
-     
-
+  #check data given from the User    
+    def clean_name(self):
+        name=self.cleaned_data["name"]
+        return name
     
+    def clean_family(self):
+        family=self.cleaned_data["family"]
+        if family[0]!='A': 
+            raise ValidationError("Family Must not started by  A...")
+        return family
+    
+    def clean_age(self):
+        age=self.cleaned_data["age"]
+        return age
+    
+
+#===================================================================================       
+
+
 
 class InputForm3(forms.Form):
     name=forms.CharField(max_length=10 , required=True,label='Name')    
@@ -99,12 +145,8 @@ class InputForm3(forms.Form):
     description=forms.BooleanField(widget=forms.Textarea)
     description.widget.attrs.update({'class':'c1'})
     
-    
-    
-    
-    
-    
-    
+
+#===================================================================================         
     
 def checkValidateName(value):
     value=str(value)
@@ -112,16 +154,17 @@ def checkValidateName(value):
         raise forms.ValidationError("Name is INvalid") 
     
     
-def ageValidate(value):
-     value=int(value)
-     if value<18 or value>70:
-         raise forms.ValidationError("Age Out of  Range")
+# def ageValidate(value):
+#      value=int(value)
+#      if value<18 or value>70:
+#          raise forms.ValidationError("Age Out of  Range")
      
     
 class InputForm4(forms.Form):
     name=forms.CharField(max_length=10 , required=True,label='Name', validators=[checkValidateName])    
     family=forms.CharField(max_length=15, label="Family")
-    age=forms.IntegerField(label="Age",validators=[ageValidate])
+    age=forms.IntegerField(label="Age",validators=[validators.MaxLengthValidator(40,message="Out of 40 is not accepted"),validators.MinLengthValidator(20)])
+    # age=forms.IntegerField(label="Age",validators=[ageValidate])
     is_active=forms.BooleanField(initial=True)
     
     def clean_name(self) :

@@ -2,16 +2,20 @@
  
 {% block content %}
         <h1 class="blog-title"> Using Validators and Clean DataS in Django</h1>
+        
+        {% comment %} {% comment %} {%  if form.errors %}
+                        <div style="height:200px; width: 60%; margin: 10px auto; background-color:aqua">
+                        <ul>
 
-        <div style="height:200px; width: 60%; margin: 10px auto; background-color:aqua">
-                <ul>
+                                {% for error,message in form.errors.items %} {% endcomment %}
+                                        <!-- <li>  {{ error }} - {{ message }} </li>  -->
+                                        {% comment %} <li>   {{ message }} </li> 
+                                {% endfor %}         {% endcomment %}
 
-                        {% for error,message in form.errors.items %}
-                                <li>  {{ error }} - {{ message }} </li> 
-                        {% endfor %}        
+                        </ul>
+                        </div>
+        {% endif %} {% endcomment %}
 
-                </ul>
-        </div>
                 {% comment %} <form action="/formtest/aaa.html" method="post"> {% endcomment %}
                         {% comment %} if inside the action isnt helped the data are sent to its own page {% endcomment %}
                         <form action="" method="post" > 
@@ -30,8 +34,7 @@
                                 </table>  
                         </form>                        
                 </div>
-        
-        
+
 
 {% endblock %}
       
