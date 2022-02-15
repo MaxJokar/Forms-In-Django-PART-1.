@@ -1,11 +1,13 @@
 {% extends 'maintemplate.html' %}
  
 {% block content %}
-        <h1 class="blog-title"> Using Validators in Django</h1>
+        <h1 class="blog-title"> Using Validators and Clean DataS in Django</h1>
+       <h2>{{ error_message }}</h2>
+
         <div class="form-box">
                 {% comment %} <form action="/formtest/aaa.html" method="post"> {% endcomment %}
                         {% comment %} if inside the action isnt helped the data are sent to its own page {% endcomment %}
-                        <form action=""  > 
+                        <form action="" method="post" > 
                                 {%  csrf_token %}
                                 <table  border="1">
                                 {% comment %} {{form}}      {% endcomment %}

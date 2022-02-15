@@ -1,6 +1,6 @@
 from multiprocessing import context
 from django.shortcuts import render
-from .forms import InputForm1,InputForm2,widgetForm1,InputForm3
+from .forms import InputForm1,InputForm2,InputForm3,InputForm4
 
 
 
@@ -43,7 +43,7 @@ def form3(request):
 
 
 def form4(request):
-    form=widgetForm1()
+    form=InputForm4()
     context={
         'form':form
         
@@ -56,14 +56,14 @@ def form4(request):
 def form5(request):
     context={}
     if request.method=="POST":
-        form=InputForm3(request.POST)
+        form=InputForm1(request.POST)
         if form.is_valid():
             data=form.cleaned_data
             print(data["name"],data["family"],data["age"],data["is_active"])
         else:
             context["error_message"]="Form not Valid....add"
     else:
-        form=InputForm3()
+        form=InputForm1()
     context["form"]=form        
     
     return render(request,"formtest/form5.html",context)

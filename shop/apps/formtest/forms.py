@@ -6,11 +6,55 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 
+
+class InputForm(forms.Form):
+    name=forms.CharField(max_length=10 , required=True,label='Name')
+    family=forms.CharField(max_length=15, label="Family")
+    age=forms.IntegerField(label="Age",label_suffix="=>")
+    is_active=forms.BooleanField(initial=True)
+    
+
+
+def checkValidateName(value):
+    value=str(value)
+    if len(value)<2 or len (value)>20:
+        raise forms.ValidationError("Name is INvalid") 
+    
+    
+def ageValidate(value):
+     value=int(value)
+     if value<18 or value>70:
+         raise forms.ValidationError("Age Out of  Range")
+
+
+
 class InputForm1(forms.Form):
     name=forms.CharField(max_length=10 , required=True,label='Name')
     family=forms.CharField(max_length=15, label="Family")
     age=forms.IntegerField(label="Age",label_suffix="=>")
     is_active=forms.BooleanField(initial=True)
+    
+    
+    def clean_name(self) :
+        name=self.cleaned_data["name"]
+        return name
+    
+    def clean_family(self) :
+        family=self.cleaned_data["family"]
+        if family[0]!='A': 
+            raise ValidationError("Family Must not started by  A...")
+        return family
+    
+    def clean_age(self) :
+        age=self.cleaned_data["age"]
+        return age
+    
+    
+    
+    
+    
+    
+    
     
         
 class InputForm2(forms.Form):
@@ -36,7 +80,7 @@ class InputForm2(forms.Form):
 
     
 
-class widgetForm1(forms.Form):
+class InputForm3(forms.Form):
     name=forms.CharField(max_length=10 , required=True,label='Name')    
     family=forms.CharField(max_length=15, label="Family")
     password=forms.CharField(max_length="10",label="PASSWORD",widget=forms.PasswordInput)
@@ -74,7 +118,7 @@ def ageValidate(value):
          raise forms.ValidationError("Age Out of  Range")
      
     
-class InputForm3(forms.Form):
+class InputForm4(forms.Form):
     name=forms.CharField(max_length=10 , required=True,label='Name', validators=[checkValidateName])    
     family=forms.CharField(max_length=15, label="Family")
     age=forms.IntegerField(label="Age",validators=[ageValidate])
