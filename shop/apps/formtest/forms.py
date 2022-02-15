@@ -23,7 +23,7 @@ class InputForm0(forms.Form):
     # name=forms.CharField(max_length=10 , required=True,label='Name')
     name=forms.CharField(max_length=10 , required=True,label='Name',validators=[checkValidateName])
     family=forms.CharField(max_length=15, label="Family")
-    age=forms.IntegerField(label="Age",label_suffix="=>")
+    age=forms.IntegerField(label="Age",label_suffix="=>",validators=[ageValidate] )
     is_active=forms.BooleanField(initial=True)
 
 
