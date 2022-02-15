@@ -11,7 +11,7 @@ from django.core  import validators
 
 def checkValidateName(value):
     value=str(value)
-    if len(value)<3 or len (value)>20:
+    if len(value)<2 or len (value)>20:
         raise forms.ValidationError("Name is Invalid") 
 
 def ageValidate(value):
@@ -34,7 +34,7 @@ class InputForm0(forms.Form):
     def clean_family(self):
         family=self.cleaned_data["family"]
         if family[0]!='A': 
-            raise ValidationError("Family begins with A not accepted")
+            raise ValidationError(" Begining Letter With A  NOT Accepted !")
         return family
     
     def clean_age(self):
