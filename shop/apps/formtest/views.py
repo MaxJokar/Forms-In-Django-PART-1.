@@ -60,8 +60,8 @@ def form5(request):
         if form.is_valid():
             data=form.cleaned_data
             print(data["name"],data["family"],data["age"],data["is_active"])
-        else:
-            context["error_message"]="Form not Valid....add"
+        # else:
+        #     context["error_message"]="Form not Valid....add"
     else:
         form=InputForm1()
     context["form"]=form        

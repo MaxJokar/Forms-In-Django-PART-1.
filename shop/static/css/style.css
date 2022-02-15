@@ -98,3 +98,7 @@ h1{
 .c1{
     background-color: yellow;
 }
+
+.errorlist li{
+    color: red;
+}
