@@ -1,8 +1,11 @@
+from audioop import reverse
 from multiprocessing import context
 from urllib import request
 from django.shortcuts import redirect, render
 from .forms import InputForm0, InputForm1,InputForm2,InputForm3,InputForm4,InputForm6
 from .models import Post
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def form0(request):
     context={}
@@ -163,7 +166,8 @@ def form6(request):
         post.description=data["description"]
         # post.is_active=["is_active"]
         post.save()
-        return redirect("/formtest/index")
+        # return redirect("/formtest/index")
+        return HttpResponseRedirect(reverse('post_index'))
     context={
          'form':form
      }   

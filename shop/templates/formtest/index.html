@@ -1,14 +1,14 @@
 {% extends 'maintemplate.html' %}
  
 {% block content %}
-         <h1 class="blog-title">Forms in Django </h1>
+        <h1 class="blog-title">Forms in Django </h1>
         
         <div class="form-box">               
                 {% for post in posts %}
                         <div>
                                 <h2>{{ post.title }}</h2>
 
-                                <h2>{{ post.description}}</h2>
+                                <p>{{ post.description}}</p>
 
                         </div>
 

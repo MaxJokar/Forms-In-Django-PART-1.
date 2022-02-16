@@ -12,7 +12,7 @@ urlpatterns = [
     path('form5/',views.form5),
     path('form01/',views.form01),
     path('form6/',views.form6),
-    path('index/',views.index),
+    path('index/',views.index,name="post_index"),
     
     
     
