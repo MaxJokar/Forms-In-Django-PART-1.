@@ -2,17 +2,18 @@
  
 {% block content %}
         <h1 class="blog-title">Simple Form in Django</h1>
-        {% comment %} <h2> {{ error_message }}</h2> {% endcomment %}
-        <div style="height:200px; width:60p%; margin:10px auto; background-color:blue;"> 
+       {% if form.errors %}
+                <div style="height:200px; width:60p%; margin:10px auto; background-color:blue;"> 
                         <ul>
-                                {% for error, message in form.errors.items %}
-                                <!-- {% comment %} <li> {{ error }}- {{message}} </li> {% endcomment %} -->
-                                         <li>{{message}}</li>
+                                {% for error,message in form.errors.items %}
+                                        <!-- {% comment %} <li> {{ error }}- {{message}} </li> {% endcomment %} -->
+                                                <li>{{message}}</li>
                                 {% endfor %}
-                        
-                        </ul>
+                                
+                         </ul>
 
-        </div>
+                </div>
+        {% endif %}
         
         <div class="form-box">               
                 <form action="" method="post" > 
