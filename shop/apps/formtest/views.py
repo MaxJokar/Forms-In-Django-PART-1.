@@ -11,11 +11,32 @@ def form0(request):
             data=form.cleaned_data
             print(data["name"],data["family"],data["age"],data["is_active"])
         else:
-            context["error_message"]="Form not Valid....add"
+            context["error_message"]="Form not Valid...."
     else:
         form=InputForm0()
     context["form"]=form        
     return render(request,"formtest/form0.html",context)
+
+#=================================================================================
+def form01(request):
+    context={}
+    if request.method=="POST":
+        form=InputForm0(request.POST)
+        if form.is_valid():
+            data=form.cleaned_data
+            print(data["name"],data["family"],data["age"],data["is_active"])
+        # else:
+        #     context["error_message"]="Form not Valid...."
+    else:
+        form=InputForm0()
+    context["form"]=form        
+    return render(request,"formtest/form01.html",context)
+
+
+
+
+
+
 
 
 

@@ -12,12 +12,12 @@ from django.core  import validators
 def checkValidateName(value):
     value=str(value)
     if len(value)<2 or len (value)>20:
-        raise forms.ValidationError("Name is Invalid") 
+        raise forms.ValidationError("Name is Invalid(more than 2 less than 20 Char accepted)") 
 
 def ageValidate(value):
      value=int(value)
      if value<18 or value>70:
-         raise forms.ValidationError("Age Out of  Range") 
+         raise forms.ValidationError("Age Out of  Range ,less than 18 older than 70 not Accepted") 
 
 class InputForm0(forms.Form):
     # name=forms.CharField(max_length=10 , required=True,label='Name')
@@ -33,8 +33,8 @@ class InputForm0(forms.Form):
     
     def clean_family(self):
         family=self.cleaned_data["family"]
-        if family[0]!='A': 
-            raise ValidationError(" Begining Letter With A  NOT Accepted !")
+        if family[0]=='A': 
+            raise ValidationError(" Begining Letter With 'A'  NOT Accepted !")
         return family
     
     def clean_age(self):

@@ -10,6 +10,7 @@ urlpatterns = [
     path('form3/',views.form3),
     path('form4/',views.form4),
     path('form5/',views.form5),
+    path('form01/',views.form01),
     
 ]
 
