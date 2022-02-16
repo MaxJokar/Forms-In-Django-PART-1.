@@ -1,9 +1,9 @@
 {% extends 'maintemplate.html' %}
  
 {% block content %}
-         <h1 class="blog-title">Simple Form in Django</h1>
-        
-        <div class="form-box">               
+         
+{% comment %}         
+        <div class="form-box">                {% endcomment %}
                 <form action="" method="post" > 
                         {%  csrf_token %}
                         {% comment %} <table  border="1"> {% endcomment %}

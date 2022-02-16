@@ -1,6 +1,6 @@
 from multiprocessing import context
 from urllib import request
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .forms import InputForm0, InputForm1,InputForm2,InputForm3,InputForm4,InputForm6
 from .models import Post
 
@@ -163,7 +163,7 @@ def form6(request):
         post.description=data["description"]
         # post.is_active=["is_active"]
         post.save()
-    
+        return redirect("formtest/index.html")
     context={
          'form':form
      }   
@@ -171,9 +171,11 @@ def form6(request):
     return render(request,"formtest/form6.html",context)
 
 
-def index(request):
-    post=Post.objects.all()
+
+
+def index(request): 
+    posts=Post.objects.all()
     context={
-        "posts:posts"
+        "posts":posts
     }
-    return render(request,"formtest/indext.html")
+    return render(request,"formtest/index.html",context)
