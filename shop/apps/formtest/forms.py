@@ -1,10 +1,12 @@
 from audioop import avg
+from dataclasses import fields
 from distutils.command import clean
 from logging import PlaceHolder
 # from xml.dom import ValidationErr
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core  import validators
+from .models import Post
 
 
 
@@ -41,22 +43,6 @@ class InputForm0(forms.Form):
         age=self.cleaned_data["age"]
         return age
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -181,29 +167,17 @@ class InputForm4(forms.Form):
         age=self.cleaned_data["age"]
         return age
     
+class InputForm6(forms.ModelForm):
+    class Meta:
+        model=Post
+        fields="__all__"
+            # fields=['title','Description']
     
     
     
+
     
-    
-    
-    # password=forms.CharField(max_length="10",label="PASSWORD",widget=forms.PasswordInput)
-    # Year_Choice=['2018','2019','2020','2021','2022'] #Limited years  Added 
-    # register_date1=forms.DateField(label="Date of Enrolment", required=False,widget=forms.SelectDateWidget(years=Year_Choice))
-    # register_date2=forms.DateField(label="Date of Enrolment", required=False,widget=forms.NumberInput(attrs={'type':'date'}))
-    # #attribute added to show its type of  date.anytime we wanted a property and a tag added to html ,use attrs
-    # FAVORITE_COLOR=[
-    #                 ("1","Red"),
-    #                 ("2","Green"),
-    #                 ("3","Blue"),
-    #                 ("4","Yellow"),                             
-    #                 ]
-    # color=forms.ChoiceField(choices=FAVORITE_COLOR)
-    # colors=forms.MultipleChoiceField(choices=FAVORITE_COLOR)
-    # description=forms.BooleanField(widget=forms.Textarea)
-    # description.widget.attrs.update({'class':'c1'})
-        
-    
+ 
     
     
     

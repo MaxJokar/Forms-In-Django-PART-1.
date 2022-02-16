@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'training',
+        'NAME': 'DjangoFormsTraining',
         'USER':'root',
         'PASSWORD':'123456',
         'HOST': 'localhost',

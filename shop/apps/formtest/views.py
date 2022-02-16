@@ -1,6 +1,6 @@
 from multiprocessing import context
 from django.shortcuts import render
-from .forms import InputForm0, InputForm1,InputForm2,InputForm3,InputForm4
+from .forms import InputForm0, InputForm1,InputForm2,InputForm3,InputForm4,InputForm6
 
 
 def form0(request):
@@ -117,10 +117,13 @@ def form5(request):
 
 
 
-# def form6(request):
-#     form=InputForm3()
-#     context={
-#         'form':form
+def form6(request):
+    form=InputForm6()
+    context={
+        'form':form
         
-#     }
-#     return render(request,"formtest/form.html",context)
+    }
+    return render(request,"formtest/form6.html",context)
+
+
+

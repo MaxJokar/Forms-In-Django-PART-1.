@@ -1,0 +1,47 @@
+{% extends 'maintemplate.html' %}
+ 
+{% block content %}
+        <h1 class="blog-title">Simple Form in Django</h1>
+       {% if form.errors %}
+                <div style="height:200px; width:60p%; margin:10px auto; background-color:blue;"> 
+                        <ul>
+                                {% for error,message in form.errors.items %}
+                                        <!-- {% comment %} <li> {{ error }}- {{message}} </li> {% endcomment %} -->
+                                                <li>{{message}}</li>
+                                {% endfor %}
+                                
+                         </ul>
+
+                </div>
+        {% endif %}
+        
+        <div class="form-box">               
+                <form action="" method="post" > 
+                        {%  csrf_token %}
+                        {% comment %} <table  border="1"> {% endcomment %}
+                        <table>       
+                        {% comment %} {{form}}      {% endcomment %}
+                                {{form.as_table}}   
+                        
+                                <tr>
+                                        <td colspan="5">
+                                                <input type="submit" value="ENROLMENT">
+                                        </td> 
+                                        {% comment %} <td>
+                                        </td>         {% endcomment %}
+                                </tr>
+                        </table>  
+                </form>                        
+        </div>
+
+
+{% endblock %}
+
+
+
+
+{% block title  %}
+
+Registeration
+
+{% endblock  %}
