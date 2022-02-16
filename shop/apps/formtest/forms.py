@@ -171,7 +171,7 @@ class InputForm6(forms.ModelForm):
     class Meta:
         model=Post
         fields="__all__"
-            # fields=['title','Description']
+        # fields=['title','Description']
     
     
     
@@ -181,7 +181,7 @@ class InputForm6(forms.ModelForm):
     
     
     
-    
+     
     
     
     

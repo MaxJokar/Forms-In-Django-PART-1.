@@ -1,7 +1,8 @@
 from multiprocessing import context
+from urllib import request
 from django.shortcuts import render
 from .forms import InputForm0, InputForm1,InputForm2,InputForm3,InputForm4,InputForm6
-
+from .models import Post
 
 def form0(request):
     context={}
@@ -117,13 +118,62 @@ def form5(request):
 
 
 
-def form6(request):
-    form=InputForm6()
+def form10(request):
+    context={}
+    form=InputForm6(request.POST)
+    if form.is_valid():
+        data=form.cleaned_data
+    #     post=Post()
+        print(data['title'])
+        # post.title=data["title"]
+        # post.description=data["description"]
+        # post.is_active=["is_active"]
+        # post.save()
+    
     context={
-        'form':form
-        
-    }
+         'form':form
+     }   
+
     return render(request,"formtest/form6.html",context)
 
 
 
+# def form6(request):
+#     context={}
+#     form=InputForm6(request.POST)
+#     if form.is_valid():
+#         data=form.cleaned_data
+ 
+#         print(data['title'])
+
+#     context={
+#          'form':form
+#      }   
+
+#     return render(request,"formtest/form6.html",context)
+
+
+def form6(request):
+    context={}
+    form=InputForm6(request.POST) 
+    if form.is_valid():
+        data=form.cleaned_data
+        post=Post()
+        post.title=data["title"]
+        post.description=data["description"]
+        # post.is_active=["is_active"]
+        post.save()
+    
+    context={
+         'form':form
+     }   
+
+    return render(request,"formtest/form6.html",context)
+
+
+def index(requ):
+    post=Post.objects.all()
+    context={
+        "posts:posts"
+    }
+    return render(request,"formtest/indext.html")

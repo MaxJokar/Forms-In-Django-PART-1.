@@ -11,7 +11,7 @@ class Post(models.Model):
     is_active=models.BooleanField(default=False)
     
     def __str__(self):
-        return self.title+" "+self.description+" "+str(self.is_active)
+        return self.title +" "+self.description +" "+str(self.is_active)
 
 #our Model is created
 # class Author(models.Model):
