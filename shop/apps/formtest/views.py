@@ -171,7 +171,7 @@ def form6(request):
     return render(request,"formtest/form6.html",context)
 
 
-def index(requ):
+def index(request):
     post=Post.objects.all()
     context={
         "posts:posts"
