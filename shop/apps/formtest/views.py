@@ -163,13 +163,13 @@ def form6(request):
         post.description=data["description"]
         # post.is_active=["is_active"]
         post.save()
-        return redirect("formtest/index.html")
+        return redirect("/formtest/index")
     context={
          'form':form
      }   
 
     return render(request,"formtest/form6.html",context)
-
+ 
 
 
 
