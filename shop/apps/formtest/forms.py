@@ -170,7 +170,7 @@ class InputForm4(forms.Form):
 class InputForm6(forms.ModelForm):
     class Meta:
         model=Post
-        fields="__all__"
+        fields="__all__" #This wasy django takes all fields from Model post ,and make the class InputFom6  (no need again represent one by one)
         # fields=['title','Description']
     
     
