@@ -164,7 +164,7 @@ def form6(request):
         post=Post()
         post.title=data["title"]
         post.description=data["description"]
-        # post.is_active=["is_active"]
+        post.is_active=data["is_active"]
         post.save()
         # return redirect("/formtest/index")
         return HttpResponseRedirect(reverse('post_index'))
